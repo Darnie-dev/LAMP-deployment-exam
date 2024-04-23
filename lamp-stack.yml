@@ -5,14 +5,14 @@
   tasks:
     - name: Copy file with owner and permissions
       ansible.builtin.copy:
-        src: /home/vagrant/LAMP.sh
-        dest: /home/vagrant/LAMP.sh
+        src: ~/LAMP.sh
+        dest: ~/LAMP.sh
         owner: root
         group: root
         mode: '0755'
 
     - name: install lamp stack and laravel
-      script: /home/vagrant/LAMP.sh
+      script: ~/LAMP.sh
 
     - name: set cron job to check uptime of the server every 12 am
       cron:
