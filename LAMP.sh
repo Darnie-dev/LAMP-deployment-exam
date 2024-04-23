@@ -57,8 +57,8 @@ cd /var/www/
 sudo git clone https://github.com/laravel/laravel.git
 cd laravel
 echo "Installing Laravel dependencies"
-composer install --optimize-autoloader --no-dev
-yes | sudo composer update
+composer install --optimize-autoloader --no-dev --no-interaction
+sudo composer update -y
 sudo cp .env.example .env
 
 # Configure Laravel application settings in .env file
@@ -67,10 +67,10 @@ DB_DATABASE="laraveldb"
 DB_USERNAME="daniel"
 DB_PASSWORD="P@LMOIL"
 ENV_FILE="/var/www/laravel/.env"
-sed -i "s/DB_HOST=.*/DB_HOST=${DB_HOST}/" ${ENV_FILE}
-sed -i "s/DB_DATABASE=.*/DB_DATABASE=${DB_DATABASE}/" ${ENV_FILE}
-sed -i "s/DB_USERNAME=.*/DB_USERNAME=${DB_USERNAME}/" ${ENV_FILE}
-sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${DB_PASSWORD}/" ${ENV_FILE}
+sudo sed -i "s/DB_HOST=.*/DB_HOST=${DB_HOST}/" ${ENV_FILE}
+sudo sed -i "s/DB_DATABASE=.*/DB_DATABASE=${DB_DATABASE}/" ${ENV_FILE}
+sudo sed -i "s/DB_USERNAME=.*/DB_USERNAME=${DB_USERNAME}/" ${ENV_FILE}
+sudo sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${DB_PASSWORD}/" ${ENV_FILE}
 
 # Generate Laravel application key
 sudo php artisan key:generate
